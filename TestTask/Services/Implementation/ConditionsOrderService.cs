@@ -14,14 +14,14 @@ namespace TestTask.Services.Implementation
             this.dbContext = dbContext;
         }
 
-        public Task<Order> GetOrder()
+        public async Task<Order> GetOrder()
         {
-            return dbContext.Orders.OrderByDescending(o => o.Price).FirstOrDefaultAsync();
+            return await dbContext.Orders.OrderByDescending(o => o.Price).FirstOrDefaultAsync();
         }
 
-        public Task<List<Order>> GetOrders()
+        public async Task<List<Order>> GetOrders()
         {
-            return dbContext.Orders.Where(o => o.Quantity > 10).ToListAsync();
+            return await dbContext.Orders.Where(o => o.Quantity > 10).ToListAsync();
         }
     }
 }
